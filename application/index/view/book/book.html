@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图书分类</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.css" >
+<script src="/mbook/public/static/JQM/jquery-1.11.1.min.js"></script>
+<script src="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.5.2.min.js"></script>
+<script type="text/javascript">
+  function jiaru(){
+      var xmlhttp = null;  
+      var data=null;
+      try{
+        xmlhttp = new window.XMLHttpRequest();
+      }catch(e){
+       xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+      }
+      var value = document.getElementById("shuming").innerHTML;
+      var url = "../Shappingcat/addcat?num="+value;
+      xmlhttp.open('GET',url,true);
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function(){
+      if(xmlhttp.readyState==4 && xmlhttp.status==200){ 
+          alert("加入购物车成功");
+      }
+    }
+  }
+</script>  
+</head>
+
+<body>
+<div data-role="page" id="page1">
+  <div data-role="header" >
+    <h1>图书展示</h1>
+    <a data-ajax="false" href="../index/index" data-role="button" data-icon="home">首页</a>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#page1">概述</a></li>
+        <li><a href="#page2">评论</a></li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="content">
+    <div id="gaishu" >
+      <h1 align="content" id="shuming">{$res.book_name}</h1>
+      <p> <img src="/mbook/public/static/images/{$res.book_img}" /></p>
+      <a id="jiaru" onclick="jiaru()" data-ajax="false"  data-role="button" data-icon="home">加入购物车</a>
+    </div>
+  </div>
+  <div data-role="footer" data-id="nav_footer">
+  <div id="gaishu">
+      <h1>{$res.book_about}</h1>
+      <h1>{$res.book_directory}</h1>
+    </div>
+  <center>
+  
+  </center>
+   </div>
+</div>
+
+
+
+<div data-role="page" id="page2">
+  <div data-role="header" >
+    <h1>评论</h1>
+    <a data-ajax="false" href="../index/index" data-role="button" data-icon="home">首页</a>
+    <div data-role="navbar">
+      <ul>
+        <li><a href="#page1">概述</a></li>
+
+         <li><a href="#page2">评论</a></li>
+      
+      </ul>
+    </div>
+  </div>
+  <div data-role="content">
+    <div id="gaishu">
+     <ul>
+    {foreach name="res1" item='s'}
+      
+      <h3>用户:{$s.user_id}</h3>
+      <h4>评论:{$s.content}</h4>
+      <hr>
+    {/foreach}
+    </ul>
+    </div> 
+  </div>
+  <div data-role="footer" data-id="nav_footer">
+     
+  </div>
+</div>
+
+
+
+
+</body>
+</html>

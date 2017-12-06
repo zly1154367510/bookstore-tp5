@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户注</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.css" >
+<script src="/mbook/public/static/JQM/jquery-1.11.1.min.js"></script>
+<script src="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.js"></script>
+<style type="text/css">
+
+    .image1{ 
+       
+        width:200px; 
+        height:200px; 
+        border-radius:200px; 
+    }
+
+    .image2{
+      
+        width:200px; 
+        height:200px; 
+        border-radius:20px; 
+    }
+    </style>
+
+</head>
+
+<body>
+<div data-role="page" id="page1">
+  <div data-role="header"> 
+    <a href="../Index/index.html" data-ajax="false" data-role="button" data-icon="home">首页</a>
+    <h3 id="reg"> 用户详情 </h3>
+  </div>
+  <div data-role="content">
+  <center>
+    <img class="image1" src="/mbook/public/static/userImages/{$res.user_photo}">
+    <p>用户:{$res.user_name}</p>
+      <p>电话:{$res.user_tel}</p>
+       <p>qq:{$res.user_qq}</p>
+  </center>
+  </div>
+  <div data-role="footer">
+
+    <div data-role="navbar">
+    <ul>
+      <li><a href="../User/perfect"   data-ajax="false">完善资料</a></li>
+      <li><a href="../Shappingcat/index"   data-ajax="false">购物车</a></li>
+       <li><a href="../Order/che"   data-ajax="false">订单</a></li>
+      <li><a href="../User/cancellation"   data-ajax="false">注销登陆</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

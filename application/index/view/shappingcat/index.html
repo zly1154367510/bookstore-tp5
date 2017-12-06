@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>图书分类</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.css" >
+<script src="/mbook/public/static/JQM/jquery-1.11.1.min.js"></script>
+<script src="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page">
+  <div data-role="header" >
+    <a data-ajax="false" href="../index/index" data-role="button" data-icon="home">首页</a>
+
+     
+
+    <h1>购物车</h1>
+  </div>
+  <div data-role="content" data-ajax="false">
+     <ul>
+     
+      {foreach name='res' item='s'}
+      
+      <div data-role="collapsible" data-collapsed="false" data-ajax="false">
+       <br>
+         <a href='../Book/book?bookname={$s.book_name}' data-ajax="false"> <img src="/mbook/public/static/images/{$s.book_img}" /> <br/>
+        <span id ='shuming'>{$s.book_name}</span><br/>
+        <span>￥{$s.book_newprice}</span> </a>
+        <a data-ajax="false" onclick="remove()" data-role="button" data-icon="home">移除</a>
+      </div>
+      {/foreach}
+         <a data-ajax="false" href="../Order/checkout" data-role="button">结账</a>
+
+      
+     </ul>
+  </div>
+  <div data-role="footer" data-theme="b">
+    <h1>机电书店</h1>
+  </div>
+  <!--  <form id="hiddenForm" action="../Order/index" method="post">
+   </form> -->
+</div>
+<script type="text/javascript">
+  function remove(){
+      var xmlhttp = null;  
+      var data=null;
+      try{
+        xmlhttp = new window.XMLHttpRequest();
+      }catch(e){
+       xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+      }
+      var value = document.getElementById("shuming").innerHTML;
+      var url = "../Shappingcat/removeBook?num="+value;
+      xmlhttp.open('GET',url,true);
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function(){
+      if(xmlhttp.readyState==4 && xmlhttp.status==200){ 
+          alert("删除成功");
+          window.location.href='../Shappingcat/index';
+      }
+    }
+  }
+
+  // function tijiao(){
+  //   var $box = $("form :checked");
+  //   var str = "";
+  //   var i = 1;
+  //   for (var i = $box.length - 1; i >= 0; i--) {
+  //     str +="<input type='text' name='"+i+"' value='ss'>";
+  //     i+=1;
+  //     $("#hiddenForm").append(str);
+  //   }
+  // }
+</script>
+</body>
+</html>
+

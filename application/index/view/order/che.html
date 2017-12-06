@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>结账</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.css" >
+<script src="/mbook/public/static/JQM/jquery-1.11.1.min.js"></script>
+<script src="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+
+<div data-role="page" id="page1">
+  <div data-role="header"> 
+    <a href="../Index/index.html" data-ajax="false" data-role="back" data-icon="home">首页{$i=1}</a>
+    
+    <h3 id="reg"> 结账 </h3>
+  </div>
+  <div data-role="content">
+  <ul>
+   
+      {foreach name='res' item='s'}
+
+        <h1>{$i}订单</h1> <a data-ajax="false" data-role="back" 
+        onclick="remove({$res1[$i-1]['order_id']})" data-icon="home">删除订单</a>
+          {foreach name='s' item='e'}
+      
+      <div data-role="collapsible" data-collapsed="false" data-ajax="false">
+       <br>
+         <a href="../Order/comment?shuming={$e}" data-ajax="false" data-role="back" data-icon="home">{$e}</a>
+        
+      </div>
+          {/foreach} 
+          {$i++}
+      {/foreach}
+
+      
+     </ul>
+  </div>
+</div>
+<script type="text/javascript">
+ function remove(i){
+      var xmlhttp = null;  
+      var data=null;
+      try{
+        xmlhttp = new window.XMLHttpRequest();
+      }catch(e){
+       xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+      }
+    
+      var url = "../Order/removeCheckOut?num="+i;
+      xmlhttp.open('GET',url,true);
+      xmlhttp.send();
+      xmlhttp.onreadystatechange = function(){
+      if(xmlhttp.readyState==4 && xmlhttp.status==200){ 
+          alert("删除成功");
+          window.location.href='../Order/che';
+      }
+    }
+  }
+  </script>
+</body>
+</html>

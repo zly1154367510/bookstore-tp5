@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户注</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.css" >
+<script src="/mbook/public/static/JQM/jquery-1.11.1.min.js"></script>
+<script src="/mbook/public/static/JQM/jquery.mobile-1.4.5.min.js"></script>
+
+</head>
+
+<body>
+<div data-role="page" id="page1">
+  <div data-role="header"> 
+    <a href="../Index/index" data-ajax="false" data-role="button" data-icon="home">首页</a>
+    <h3 id="reg"> 密码找回 </h3>
+  </div>
+  <div data-role="content">
+    <form name="RegForm" method="post" action="{:url('rebulidDo')}" data-ajax="false">
+      <input name="username" type="hidden" value={$username}>
+     <div data-role="fieldcontain">
+        <label for="password"> 新密码 </label>
+        <input name="password" id="password" placeholder="" value="" type="password" required>
+      </div>
+      <div data-role="fieldcontain">
+        <label for="password1"> 确认密码 </label>
+        <input name="password1" id="password1"  value="" type="password" required>
+      </div>
+        <input data-inline="true" type="submit" name="submit" value="提交"  />
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>
